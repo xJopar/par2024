@@ -97,6 +97,58 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Producto'
+ 
+  /productos/{id}:
+    get:
+      summary: Obtener una producto por su ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID único de la factura
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Factura obtenida correctamente
+        '404':
+          description: Factura no encontrada
+          
+    put:
+          summary: Actualizar una producto existente por su ID
+          parameters:
+            - name: id
+              in: path
+              description: ID de la producto a actualizar
+              required: true
+              schema:
+                type: integer
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Producto'
+          responses:
+            '200':
+              description: Factura actualizada exitosamente
+            '404':
+              description: Factura no encontrada
+    delete:
+      summary: Eliminar una producto existente por su ID
+      parameters:
+        - name: id
+          in: path
+          description: ID de la factura a eliminar
+          required: true
+          schema:
+            type: integer
+      responses:
+          '204':
+            description: Factura eliminada exitosamente
+          '404':
+            description: Factura no encontrada   
 
 #propiedad fundamental
 components:
