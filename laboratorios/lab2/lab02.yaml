@@ -28,7 +28,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/NuevaFactura'
+              $ref: '#/components/schemas/Factura'
       responses:
         '201':
           description: Factura creada exitosamente
@@ -143,3 +143,43 @@ components:
       required:
         - nombre
         - precio
+        
+    Clientes:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: ID único del cliente
+        nombre:
+          type: string
+          description: Nombre del cliente
+        apellido:
+          type: string
+          description: Apellido del cliente
+        ruc:
+          type: number
+          format: double
+          description: RUC del cliente
+      required:
+        - nombre
+        - apellido
+        - ruc
+        
+    
+    Proveedores:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: ID único del proveedor
+        nombre:
+          type: string
+          description: Nombre del proveederor
+        ruc:
+          type: string
+          description: RUC para la facturacion del proveedor
+        localizacion:
+          type: string
+          description: Direccion del proveedor
